@@ -1,3 +1,270 @@
 * { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, sans-serif; }
-img { max-width: 100%; height: auto; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f4f1ec;
+  color: #232323;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 20px 72px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.app-header h1 {
+  font-size: 2.4rem;
+  margin: 0 0 8px;
+  color: #17324d;
+  letter-spacing: 0.01em;
+}
+.app-header p {
+  margin: 0;
+  color: #4a4a4a;
+  font-size: 1.05rem;
+}
+
+.section {
+  margin-bottom: 56px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px 36px;
+  box-shadow: 0 2px 14px rgba(20, 30, 45, 0.08);
+}
+.section h2 {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+  color: #17324d;
+}
+.section-intro {
+  margin: 0 0 24px;
+  color: #555;
+}
+
+/* ---------- Journey Flowchart ---------- */
+.flowchart {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 12px 4px 20px;
+  scroll-snap-type: x proximity;
+}
+.flowchart::-webkit-scrollbar { height: 8px; }
+.flowchart::-webkit-scrollbar-thumb { background: #cfc6b8; border-radius: 4px; }
+
+.flow-node {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+.flow-node-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 128px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px 10px;
+  border-radius: 14px;
+  font-family: inherit;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.flow-node-btn:hover { background: rgba(63, 111, 180, 0.08); transform: translateY(-2px); }
+.flow-node-btn:focus-visible {
+  outline: 3px solid #1a4c8b;
+  outline-offset: 2px;
+}
+.flow-node-btn.is-selected { background: rgba(63, 111, 180, 0.12); }
+
+.day-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #3f6fb4;
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.frame-outer {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.frame-inner {
+  overflow: hidden;
+  border: 3px solid #d7cdb8;
+  background: #e9e3d6;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.flow-node-btn.is-selected .frame-inner {
+  border-color: #1a4c8b;
+  box-shadow: 0 0 0 4px rgba(26, 76, 139, 0.25), 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.frame-inner.frame-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+}
+.frame-inner.frame-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame-outer.frame-diamond { width: 100px; height: 100px; }
+.frame-inner.frame-diamond {
+  width: 74px;
+  height: 74px;
+  border-radius: 10px;
+  transform: rotate(45deg);
+}
+.frame-inner.frame-diamond img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(-45deg) scale(1.55);
+}
+
+.node-city {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #17324d;
+  text-align: center;
+}
+.node-date {
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+}
+
+.flow-connector {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  width: 26px;
+  height: 96px;
+  margin-top: 46px;
+  position: relative;
+}
+.flow-connector-line {
+  flex: 1;
+  height: 3px;
+  background: #d7cdb8;
+}
+.flow-connector-arrow {
+  color: #6b6350;
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-left: -2px;
+}
+
+/* ---------- Itinerary table ---------- */
+.itinerary-panel {
+  margin-top: 20px;
+  border-top: 1px solid #ece6d9;
+  padding-top: 20px;
+}
+.itinerary-panel-header h3 {
+  margin: 0 0 2px;
+  color: #17324d;
+  font-size: 1.25rem;
+}
+.itinerary-panel-subtitle {
+  margin: 0 0 16px;
+  color: #666;
+  font-size: 0.9rem;
+}
+.itinerary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.itinerary-table th,
+.itinerary-table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid #ece6d9;
+}
+.itinerary-table th {
+  background: #17324d;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.itinerary-table tbody tr:nth-child(odd) { background: #faf8f3; }
+.itinerary-table tbody tr:hover { background: #eef3fa; }
+.itinerary-table td:first-child { white-space: nowrap; font-weight: 600; color: #3f6fb4; }
+
+/* ---------- Expense chart ---------- */
+.expense-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+@media (max-width: 860px) {
+  .expense-section { grid-template-columns: 1fr; }
+}
+.expense-chart-card,
+.expense-breakdown-card {
+  background: #fbfaf7;
+  border: 1px solid #ece6d9;
+  border-radius: 14px;
+  padding: 20px 18px;
+}
+.expense-chart-card h3,
+.expense-breakdown-card h3 {
+  margin: 0 0 4px;
+  color: #17324d;
+  font-size: 1.15rem;
+}
+.expense-total {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: #333;
+}
+.expense-breakdown-subtitle {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 0.88rem;
+}
+.chart-hint {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: #595959;
+  text-align: center;
+}
+.legend-label {
+  color: #333;
+  font-size: 0.9rem;
+}
+.chart-tooltip {
+  background: #17324d;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 520px) {
+  .app-header h1 { font-size: 1.8rem; }
+  .section { padding: 20px 14px 28px; }
+}
